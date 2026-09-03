@@ -1,0 +1,12 @@
+{
+  "id": "prod-invalid-gtin-internal",
+  "name": { "en": "Bad GTIN internal Product" },
+  "product_form": "edible",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "pkg-invalid-gtin-internal",
+      "gtin": { "scheme": "internal", "value": "SYS-INT-42" }
+    }
+  ]
+}

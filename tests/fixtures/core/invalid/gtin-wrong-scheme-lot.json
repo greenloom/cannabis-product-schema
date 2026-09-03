@@ -1,0 +1,12 @@
+{
+  "id": "prod-invalid-gtin-lot",
+  "name": { "en": "Bad GTIN lot Product" },
+  "product_form": "edible",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "pkg-invalid-gtin-lot",
+      "gtin": { "scheme": "lot", "value": "LOT-2026-0903-X" }
+    }
+  ]
+}
