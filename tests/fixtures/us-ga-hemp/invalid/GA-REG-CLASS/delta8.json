@@ -1,0 +1,28 @@
+{
+  "id": "ga-prod-invalid-delta8-class",
+  "name": { "en": "Out-of-Scope Delta-8 (analyte, not class)" },
+  "product_form": "vape",
+  "regulatory_class": "delta8",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-delta8",
+      "sku": "OOS-D8",
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-delta8",
+        "tested_at": "2026-04-01T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-delta8",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBD", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBDA", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBG", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBGA", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "HHC", "value": 1, "unit": "mg", "basis": "per_serving" }
+        ]
+      }
+    }
+  ]
+}

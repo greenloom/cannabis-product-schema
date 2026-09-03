@@ -35,7 +35,7 @@
   },
   "coa_gate": {
     "max_age_days": 365,
-    "max_age_basis": "GA rule states '12 months'; encoded here as 365 days (see rules/README.md#twelve-months-as-365-days for the rounding note).",
+    "max_age_basis": "O.C.G.A. § 2-23-9.1 / GDA: 'within the last 12 months'; encoded as 365 days (fail-closed: 12 calendar months can span 366 days; see rules/README.md#twelve-months-as-365-days).",
     "required_analytes": ["THC", "CBD", "CBDA", "CBG", "CBGA", "CBN", "HHC"],
     "citation": "GA Dept. of Agriculture guidance (research-synthesis-ga-hemp-rule-read-and-d8449 P6); decision-coa-publication-gate",
     "also_requires": ["public_url", "overall_pass = true", "contaminants_passed = true"]

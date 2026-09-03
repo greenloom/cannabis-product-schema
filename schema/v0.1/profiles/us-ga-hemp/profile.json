@@ -12,12 +12,24 @@
       "covers": "per-form THC mg caps, full-panel COA requirement, COA recency/public-availability"
     },
     {
+      "id": "40-32-5-.01",
+      "title": "Ga. Comp. R. & Regs. r. 40-32-5-.01(1)(a)3 (F. 2024-09-11, eff. 2024-10-01)",
+      "source": "https://www.law.cornell.edu/regulations/georgia/Ga-Comp-R-Regs-R-40-32-5-.01",
+      "covers": "marijuana products or low THC oil products shall not be sold as consumable hemp (GA-REG-CLASS exclusion)"
+    },
+    {
       "id": "SB-494",
       "title": "Georgia Senate Bill 494",
       "source": "Georgia General Assembly",
       "covers": "retail sale ban on hemp flower/leaf (prerolls included); statutory basis for the ≤0.3% total-THC hemp definition"
+    },
+    {
+      "id": "O.C.G.A-2-23",
+      "title": "O.C.G.A. §§ 2-23-3, 2-23-6.2, 2-23-9.1, 2-23-9.2, 16-12-190, 16-12-200",
+      "source": "Georgia General Assembly / GDA https://agr.georgia.gov/hemp-retail-consumable-hemp-licenses (retrieved 2026-09-02)",
+      "covers": "consumable hemp product definition; retail license; COA recency 'within the last 12 months'; no suggestion of medical cannabis/low THC oil; criminal provisions"
     }
   ],
-  "confidence_note": "Cap figures (40-32-5-.06) are high-confidence from the primary rule text via the SOS rules portal; amendment currency was not independently reconfirmed at authoring time (2026-09-02) — see the 'Effective-date and amendment currency' entry in NOT_MODELED.md and the revisit trigger in decision-coa-publication-gate.",
+  "confidence_note": "Cap figures (40-32-5-.06) are high-confidence from the primary rule text via the SOS rules portal; amendment currency was not independently reconfirmed at authoring time (2026-09-02) — see the 'Effective-date and amendment currency' entry in NOT_MODELED.md and the revisit trigger in decision-coa-publication-gate. GA-REG-CLASS and COA recency now cite primary sources directly (Ga. Comp. R. & Regs. r. 40-32-5-.01(1)(a)3; O.C.G.A. §§ 2-23-3, 2-23-6.2, 2-23-9.1, 2-23-9.2; GDA page retrieved 2026-09-02). delta8 is recorded as LabResult analyte, not a GDA regulatory class.",
   "supersedes": null
 }

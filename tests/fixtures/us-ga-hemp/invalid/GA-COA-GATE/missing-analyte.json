@@ -2,7 +2,7 @@
   "id": "ga-prod-invalid-coa-partial-panel",
   "name": { "en": "Trailhead Vape, Partial Panel COA" },
   "product_form": "vape",
-  "regulatory_class": "delta8",
+  "regulatory_class": "hemp_derived",
   "packages": [
     {
       "package_id": "ga-pkg-invalid-coa-partial-panel",
