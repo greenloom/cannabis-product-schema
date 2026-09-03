@@ -67,6 +67,38 @@ which JSON Schema's static keyword set can't do.
 
 <a id="basis-mapping"></a>**Basis mapping (a documented interpretation):**
 core's `cannabinoid.basis` enum is `per_serving | per_package |
+percent_dry_weight` — there is no `per_piece` or `per_mL` basis. This is a
+jurisdiction-neutral core enum; profile-specific interpretation is required
+to align statutory per-unit language with core fields. The mapping is
+surfaced in `config.example.json` under `basis_mapping` (and duplicated here
+for rule documentation so it is not only in one place).
+
+Mapping (unchanged behavior):
+- edible "per piece" (statutory "per gummy") ↔ a cannabinoid reading with
+  `basis: per_serving` (one gummy = one serving).
+- tincture "per mL" (statutory "per 1 milliliter") ↔ computed concentration
+  = (`basis: per_package` THC mg) ÷ (`net_contents.value` where
+  `net_contents.unit == "mL"`).
+- beverage "per serving" (statutory "per 12 fl oz") ↔ a cannabinoid reading
+  with `basis: per_serving`, the same mapping as edible: a beverage container
+  is sold as a single serving, so per-serving and per-container are the same
+  reading for cap purposes.
+
+**Citation (primary):** Ga. Comp. R. & Regs. r. 40-32-5-.06 (per gummy / per
+12 fl oz / per 1 milliliter / per package). Cornell LII is acceptable for
+related provisions (e.g., r. 40-32-5-.01). Retrieved 2026-09-02. This is an
+interpretation because core `basis` is jurisdiction-neutral; the statute does
+not use the token `per_serving`. See `config.example.json.basis_mapping` for
+the machine-readable note. Do not claim the statute uses `per_serving`.
+
+This mapping does not alter `checkFormCap` behavior and introduces no new
+executable rule. No DW-reporting mandate is invented here; see NOT_MODELED.md
+and the total_thc_formula entry in config for DW handling.
+
+(The original short mapping is preserved below for continuity; the expanded
+version above is authoritative for #9.)
+
+core's `cannabinoid.basis` enum is `per_serving | per_package |
 percent_dry_weight` — there is no `per_piece` or `per_mL` basis. This rule
 module treats:
 - edible "per piece" ↔ a cannabinoid reading with `basis: per_serving`
