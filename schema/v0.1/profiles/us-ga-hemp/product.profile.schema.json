@@ -15,8 +15,8 @@
         },
         "regulatory_class": {
           "type": "string",
-          "enum": ["hemp_derived", "delta8"],
-          "description": "GA-REG-CLASS — GA consumable-hemp retail (GDA-regulated) covers hemp-derived and delta-8 products. marijuana and other_cannabis are excluded: they sit under a different licensing regime entirely, not this retail channel. This mapping is Relay's interpretation of 'GA hemp retail' scope, not a value taken verbatim from a numbered claim in research-synthesis-ga-hemp-rule-read-and-d8449 — flagged in the Phase 4 report."
+          "enum": ["hemp_derived"],
+          "description": "GA-REG-CLASS — GA consumable-hemp retail (GDA-regulated) is limited to hemp_derived (statutory 'consumable hemp product' per O.C.G.A. § 2-23-3). delta8 is an analyte reported on LabResult, not a regulatory_class. marijuana and other_cannabis are excluded from this retail channel. Marijuana products or low THC oil products shall not be sold as consumable hemp: Ga. Comp. R. & Regs. r. 40-32-5-.01(1)(a)3 (F. 2024-09-11, eff. 2024-10-01), https://www.law.cornell.edu/regulations/georgia/Ga-Comp-R-Regs-R-40-32-5-.01. See also O.C.G.A. §§ 2-23-6.2 (retail license), 2-23-9.2 (must not suggest medical cannabis / low THC oil), 16-12-190 / 16-12-200; GDA https://agr.georgia.gov/hemp-retail-consumable-hemp-licenses (retrieved 2026-09-02). hemp_derived is our token mapping to the statutory consumable-hemp-product concept."
         },
         "packages": {
           "type": "array",

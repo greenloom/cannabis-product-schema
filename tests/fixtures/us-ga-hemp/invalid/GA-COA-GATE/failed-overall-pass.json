@@ -2,7 +2,7 @@
   "id": "ga-prod-invalid-coa-failed",
   "name": { "en": "Trailhead Vape, Failed COA" },
   "product_form": "vape",
-  "regulatory_class": "delta8",
+  "regulatory_class": "hemp_derived",
   "packages": [
     {
       "package_id": "ga-pkg-invalid-coa-failed",

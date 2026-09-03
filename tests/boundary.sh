@@ -53,7 +53,7 @@ echo "-- (b) URL host allowlist --"
 # package-lock.json is machine-generated npm registry metadata (resolved
 # tarball URLs, funding links) — not authored content, excluded from the
 # host scan by design.
-ALLOWED_HOSTS=(greenloom.github.io json-schema.org schema.org rules.sos.ga.gov astm.org example.com)
+ALLOWED_HOSTS=(greenloom.github.io json-schema.org schema.org rules.sos.ga.gov astm.org example.com agr.georgia.gov law.cornell.edu)
 host_allowed() {
   local host="$1" allowed
   for allowed in "${ALLOWED_HOSTS[@]}"; do
