@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cannabis Product Schema</title>
+<style>
+  :root {
+    --paper: #faf9f6;
+    --ink: #1a1a18;
+    --muted: #5c5c56;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  body {
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 1rem;
+    color: var(--muted);
+    margin: 1.5rem 0 0.5rem;
+    font-weight: 600;
+  }
+  p, li {
+    margin: 0.5rem 0;
+  }
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a:focus {
+    outline: 2px solid #666;
+    outline-offset: 2px;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+  ul {
+    padding-left: 1.25rem;
+  }
+  li {
+    margin: 0.35rem 0;
+  }
+  footer {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a {
+    color: inherit;
+  }
+  /* underline visible on code links */
+  a code {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<!-- Cannabis Product Schema public spec index for GitHub Pages -->
+
+<h1>Cannabis Product Schema</h1>
+<p>A jurisdiction-neutral interchange format for producers, marketplaces, and retailers. Core is representable-everything. Profiles narrow it.</p>
+
+<section>
+<h2>What this is not</h2>
+<ul>
+<li><strong>Not "the standard."</strong> Cannabis Product Schema is one schema, maintained by one company. It doesn't speak for the industry and makes no claim to.</li>
+<li><strong>Not an alliance, consortium, or working group.</strong> See <a href="https://github.com/greenloom/cannabis-product-schema/blob/main/GOVERNANCE.md">GOVERNANCE.md</a> — there is no shared governance body behind this repository.</li>
+<li><strong>Not legal advice.</strong> Jurisdiction profiles encode our best reading of cited primary rule text at a point in time. Verify against current law and your own counsel before relying on them for compliance.</li>
+</ul>
+</section>
+
+<section>
+<h2>Core v0.1</h2>
+<ul>
+<li><a href="v0.1/core/product.schema.json"><code>product.schema.json</code></a> — Product is what it is</li>
+<li><a href="v0.1/core/package.schema.json"><code>package.schema.json</code></a> — Package is the unit</li>
+<li><a href="v0.1/core/lab-result.schema.json"><code>lab-result.schema.json</code></a> — LabResult wins COA/potency</li>
+<li><a href="v0.1/core/label.schema.json"><code>label.schema.json</code></a> — Label is display copy</li>
+<li><a href="v0.1/core/party.schema.json"><code>party.schema.json</code></a> — Party is brand, producer, laboratory, processor</li>
+</ul>
+</section>
+
+<section>
+<h2>Profiles</h2>
+<ul>
+<li><strong>us-ga-hemp</strong> — <a href="v0.1/profiles/us-ga-hemp/profile.json"><code>profile.json</code></a>, <a href="v0.1/profiles/us-ga-hemp/product.profile.schema.json"><code>product.profile.schema.json</code></a>, <a href="v0.1/profiles/us-ga-hemp/lab-result.profile.schema.json"><code>lab-result.profile.schema.json</code></a></li>
+</ul>
+<p>Georgia consumable-hemp retail; core has no jurisdiction constants.</p>
+</section>
+
+<section>
+<h2>Pin a version</h2>
+<p>0.x will change. Pin an exact version and re-validate on upgrade.</p>
+</section>
+
+<footer>
+maintained by Green Loom. Apache-2.0 / CC BY 4.0. <a href="https://github.com/greenloom/cannabis-product-schema/blob/main/GOVERNANCE.md">GOVERNANCE.md</a> · <a href="https://github.com/greenloom/cannabis-product-schema/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>
+</footer>
+</body>
+</html>
