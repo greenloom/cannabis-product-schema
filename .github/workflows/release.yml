@@ -7,12 +7,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   guard:
@@ -71,7 +65,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: npm ci || npm install
@@ -82,26 +76,6 @@ jobs:
       - name: Boundary check
         run: bash tests/boundary.sh
 
-  publish-pages:
-    needs: validate
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Prepare Pages artifact
-        run: |
-          # $id paths are https://greenloom.github.io/cannabis-product-schema/v0.1/... — the repo
-          # is served at /cannabis-product-schema/ (repo name), so the Pages root must contain
-          # v0.1/ directly (schema/v0.1 -> _site/v0.1), not schema/v0.1/.
-          mkdir -p _site
-          cp -r schema/v0.1 _site/v0.1
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
+# Pages deployment lives in pages.yml (triggered on push to main). The
+# github-pages environment only permits deploys from the default branch,
+# so Pages tracks main; tags carry the version guard + validation above.

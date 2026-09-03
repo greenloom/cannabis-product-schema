@@ -1,0 +1,39 @@
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare Pages artifact
+        run: |
+          # $id paths are https://greenloom.github.io/cannabis-product-schema/v0.1/...
+          # The repo is served at /cannabis-product-schema/ (repo name), so the
+          # Pages root must contain v0.1/ directly (schema/v0.1 -> _site/v0.1).
+          mkdir -p _site
+          cp -r schema/v0.1 _site/v0.1
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
