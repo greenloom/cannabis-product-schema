@@ -31,7 +31,7 @@
   "total_thc_formula": {
     "expression": "(THCA_percent_dry_weight * 0.877) + Delta9_THC_percent_dry_weight <= 0.3",
     "citation": "SB 494; GA Dept. of Agriculture (research-synthesis-ga-hemp-rule-read-and-d8449 P5)",
-    "applies_when": "a lab_result reports THCA and/or THC at basis=percent_dry_weight. Does not apply to packages whose COA reports only mg-based (per_serving/per_package) readings."
+    "applies_when": "the 0.3% formula is evaluated against percent_dry_weight readings when present. If a hemp_derived package's linked LabResult has no percent_dry_weight for both THCA and THC, fail closed (formula cannot be evaluated; needs DW verification). This is a fail-closed encoding of the profile's own formula, not an assertion that 40-32-5-.06 / SB 494 requires DW on every COA."
   },
   "coa_gate": {
     "max_age_days": 365,

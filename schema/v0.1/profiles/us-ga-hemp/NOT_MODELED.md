@@ -79,3 +79,15 @@ Out of scope entirely, by an existing decision
 program is a separate license these Stores do not hold, and encoding a
 therapeutic-use field would itself create a labeling/health-claim liability.
 Not a gap to close — a deliberate exclusion.
+
+## GA-THC-TOTAL dry-weight data requirement (P5)
+
+We have not confirmed whether 40-32-5-.06 or SB 494 requires a
+`percent_dry_weight` reading on every COA. When a hemp_derived package's
+linked LabResult has no DW THC/THCA, `checkThcTotal` now fails closed
+("0.3% formula cannot be evaluated (needs DW verification)"). This is a
+fail-closed encoding of the profile's own formula — `(THCa × 0.877) + Δ9-THC ≤ 0.3%`
+by dry weight — rather than an assertion that statute mandates DW on every
+COA. (See rules/README.md for GA-THC-TOTAL and config.example.json
+`total_thc_formula`.) Same interpretive posture as the 365-day encoding of
+"12 months" for GA-COA-GATE recency.

@@ -33,16 +33,16 @@ function cannabinoidValue(cannabinoids, code, basis) {
 /**
  * GA-THC-TOTAL — SB 494 / GA Dept. of Agriculture (P5):
  *   (THCa × 0.877) + Δ9-THC ≤ 0.3%, by dry weight.
- * Only applies when the COA actually reports percent_dry_weight readings —
- * a package whose COA is mg-only (per_serving/per_package) is silent on this
- * rule, not passing it vacuously by omission of the wrong data shape.
+ * If no percent_dry_weight readings for both THCA and THC, the formula
+ * cannot be evaluated — fail closed (needs DW verification). When at least
+ * one DW reading exists, treat the missing one as 0 (existing behavior).
  */
 export function checkThcTotal(labResult) {
   const ruleId = "GA-THC-TOTAL";
   const thca = cannabinoidValue(labResult?.cannabinoids, "THCA", "percent_dry_weight");
   const thc = cannabinoidValue(labResult?.cannabinoids, "THC", "percent_dry_weight");
   if (thca === undefined && thc === undefined) {
-    return { ruleId, ok: true, message: "no percent_dry_weight THC/THCA reported — rule does not apply" };
+    return { ruleId, ok: false, message: "missing percent_dry_weight for both THCA and THC — 0.3% formula cannot be evaluated (needs DW verification)" };
   }
   const total = (thca ?? 0) * 0.877 + (thc ?? 0);
   const ok = total <= 0.3;
