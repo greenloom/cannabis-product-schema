@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/defs/identifier.schema.json",
   "title": "Identifier",
-  "description": "A scoped external identifier — a GTIN/barcode, a lot number, or an internal system code.",
+  "description": "A scoped external identifier — a GTIN/barcode (scheme=gtin), a lot number (scheme=lot), or an internal system code. Used for Label.identity_compliance.lot. Package.gtin uses scheme=gtin only and does not carry lot/batch (see three lot/batch shapes: LabResult.batch_lot string, Label lot Identifier, Package.gtin GTIN-only). Lot vs Batch left open.",
   "type": "object",
   "properties": {
     "scheme": { "type": "string", "enum": ["gtin", "lot", "internal"] },

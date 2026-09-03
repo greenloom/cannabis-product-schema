@@ -8,7 +8,7 @@
     "package_id": { "type": "string", "minLength": 1 },
     "sku": { "type": "string" },
     "gtin": {
-      "description": "GTIN (Global Trade Item Number) for the sellable Package. When present must use scheme \"gtin\". Nullable. Schema.org 'gtin' and GS1 expectations are inspiration for the field shape and semantics, not conformance requirements.",
+      "description": "GTIN (Global Trade Item Number) for the sellable Package. When present must use scheme \"gtin\". Nullable. Package.gtin does not carry lot/batch. One of three lot/batch shapes in core: LabResult.batch_lot (string), Label.identity_compliance.lot (Identifier), Package.gtin (GTIN only). Lot vs Batch terminology intentionally left open. Schema.org 'gtin' and GS1 expectations are inspiration for the field shape and semantics, not conformance requirements.",
       "anyOf": [
         {
           "allOf": [
