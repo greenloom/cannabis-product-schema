@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/party.schema.json",
   "title": "Party",
-  "description": "One shape for the three actors an interchange document names: brand, producer, laboratory. Referenced (nested) from Product.brand, LabResult.lab, and Label.identity_compliance.manufacturer.",
+  "description": "One shape for the four roles an interchange document names: brand, producer, laboratory, processor. Referenced (nested) from Product.brand, LabResult.lab, and Label.identity_compliance.manufacturer. role=processor is for label identity_compliance / manufacturer-processor cases; producer is the grower/cultivator party; brand is the marketed identity; laboratory is the lab on LabResult.",
   "type": "object",
   "properties": {
     "party_id": { "type": "string", "minLength": 1 },

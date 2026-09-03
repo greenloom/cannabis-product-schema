@@ -19,7 +19,7 @@ Jurisdiction-neutral JSON Schema (draft 2020-12) for five objects:
   readings, pass/fail, public URL, test date.
 - **Label** — informed by ASTM D8449's module architecture (via a
   third-party summary; the standard itself is not reproduced).
-- **Party** — a brand, manufacturer, or lab reference.
+- **Party** — brand, producer, laboratory, or processor reference.
 
 Core is deliberately representable-everything: it carries no jurisdiction
 constants, and a product no jurisdiction currently allows at retail is
