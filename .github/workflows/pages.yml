@@ -30,6 +30,8 @@ jobs:
           # Pages root must contain v0.1/ directly (schema/v0.1 -> _site/v0.1).
           mkdir -p _site
           cp -r schema/v0.1 _site/v0.1
+          cp index.html _site/index.html
+          touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:
