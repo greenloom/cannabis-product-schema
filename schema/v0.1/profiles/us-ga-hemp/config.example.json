@@ -39,5 +39,28 @@
     "required_analytes": ["THC", "CBD", "CBDA", "CBG", "CBGA", "CBN", "HHC"],
     "citation": "GA Dept. of Agriculture guidance (research-synthesis-ga-hemp-rule-read-and-d8449 P6); decision-coa-publication-gate",
     "also_requires": ["public_url", "overall_pass = true", "contaminants_passed = true"]
+  },
+  "basis_mapping": {
+    "$comment": "GA-CAP basis mapping (documented interpretation only). Core basis enum is jurisdiction-neutral (per_serving | per_package | percent_dry_weight). No per_piece or per_mL in core. This structure surfaces the mapping in config rather than only in rules/README.md. Do not widen core enum. No executable rule change here.",
+    "note": "Interpretation for cap checks under 40-32-5-.06. Statutory language uses per gummy / per 12 fl oz / per 1 milliliter / per package. Mapping is profile-specific; core remains jurisdiction-neutral. See rules/README.md#basis-mapping.",
+    "mappings": {
+      "edible_per_piece": {
+        "statutory_language": "per gummy",
+        "maps_to": "cannabinoid.basis=per_serving",
+        "rationale": "A gummy piece is treated as one serving for the per-piece cap comparison."
+      },
+      "tincture_per_ml": {
+        "statutory_language": "per 1 milliliter",
+        "maps_to": "computed concentration (per_package mg / net_contents mL)",
+        "rationale": "per mL check is implemented as concentration derived from package total and labeled volume."
+      },
+      "beverage_per_serving": {
+        "statutory_language": "per 12 fl oz",
+        "maps_to": "cannabinoid.basis=per_serving",
+        "rationale": "A beverage container is sold as a single serving; per-serving aligns with per-container for cap purposes."
+      }
+    },
+    "citation": "Ga. Comp. R. & Regs. r. 40-32-5-.06 (primary; Cornell LII OK for related provisions such as r. 40-32-5-.01). Retrieved 2026-09-02. This is an interpretation; statute does not use the token per_serving.",
+    "see_also": "rules/README.md#basis-mapping; NOT_MODELED.md (no DW-reporting mandate invented here)"
   }
 }
