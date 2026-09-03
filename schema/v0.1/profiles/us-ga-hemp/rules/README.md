@@ -100,17 +100,23 @@ if cap.container_max_volume: fail if net_contents (matched by unit) > cap.contai
 **Requirement:** `(THCa × 0.877) + Δ9-THC ≤ 0.3%`, by dry weight — the
 statutory hemp-definition line.
 **Citation:** SB 494; GA Dept. of Agriculture (P5).
-**Enforced by:** `checkThcTotal(labResult)` in `index.mjs`. Applies only
-when the COA reports `percent_dry_weight` readings for THCA and/or THC —
-silent (not vacuously passing) on an mg-only COA, since that COA is simply
-not reporting the figure this formula needs.
+**Enforced by:** `checkThcTotal(labResult)` in `index.mjs`.
+If both THCA and THC lack `percent_dry_weight` readings, the formula
+cannot be evaluated — fail closed (needs DW verification). This is a
+fail-closed encoding of the profile's own formula, not an assertion that
+SB 494 or 40-32-5-.06 mandates DW on every COA. When at least one DW
+reading exists, a missing counterpart is treated as 0 for the arithmetic
+(consistent with `(x ?? 0)`).
 **Pseudocode:**
 ```
-if no percent_dry_weight THCA/THC reported: rule does not apply
+if (no percent_dry_weight for THCA AND no percent_dry_weight for THC):
+  fail ("missing percent_dry_weight for both THCA and THC — 0.3% formula cannot be evaluated (needs DW verification)")
 total = (THCA_percent ?? 0) * 0.877 + (THC_percent ?? 0)
 fail if total > 0.3
 ```
-**Fixtures:** `invalid/GA-THC-TOTAL/over-0.3-percent.json`.
+**Fixtures:**
+- `invalid/GA-THC-TOTAL/over-0.3-percent.json` (DW present but exceeds 0.3%)
+- `invalid/GA-THC-TOTAL/no-dry-weight.json` (mg-only or no DW THC/THCA on a hemp_derived package — fails closed).
 
 ## GA-COA-GATE
 

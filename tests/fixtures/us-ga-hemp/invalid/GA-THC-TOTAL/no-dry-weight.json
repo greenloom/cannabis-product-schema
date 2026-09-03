@@ -1,0 +1,30 @@
+{
+  "id": "ga-prod-invalid-thc-total-no-dw",
+  "name": { "en": "Hemp Gummies (mg-only COA)" },
+  "product_form": "edible",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-thc-total-no-dw",
+      "sku": "HG-30-MGONLY",
+      "net_contents": { "value": 30, "unit": "count" },
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-thc-total-no-dw",
+        "tested_at": "2026-02-20T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-thc-total-no-dw",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 9.5, "unit": "mg", "basis": "per_serving" },
+          { "code": "THC", "value": 285, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 20, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBDA", "value": 0.5, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBG", "value": 1.0, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBGA", "value": 0.2, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBN", "value": 0.1, "unit": "mg", "basis": "per_serving" },
+          { "code": "HHC", "value": 0, "unit": "mg", "basis": "per_serving" }
+        ]
+      }
+    }
+  ]
+}
