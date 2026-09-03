@@ -2,7 +2,7 @@
   "id": "ga-prod-invalid-coa-no-url",
   "name": { "en": "Trailhead Vape, Unpublished COA" },
   "product_form": "vape",
-  "regulatory_class": "delta8",
+  "regulatory_class": "hemp_derived",
   "packages": [
     {
       "package_id": "ga-pkg-invalid-coa-no-url",

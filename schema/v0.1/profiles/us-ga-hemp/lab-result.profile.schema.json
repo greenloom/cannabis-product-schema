@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/profiles/us-ga-hemp/lab-result.profile.schema.json",
   "title": "LabResult (us-ga-hemp profile)",
-  "description": "GA-COA-GATE structural subset (40-32-5-.06; GA Dept. of Agriculture guidance; decision-coa-publication-gate): a publishable GA Package's linked LabResult must report the full analyte panel, pass overall and on contaminants, and carry a public URL and a test date. allOf-only over core/lab-result.schema.json. The '≤12 months old' recency check is date-relative (today vs tested_at) and cannot be expressed as a static JSON Schema constraint — it lives in rules/index.mjs#checkCoaGate, keyed to the same GA-COA-GATE rule ID.",
+  "description": "GA-COA-GATE structural subset (40-32-5-.06; O.C.G.A. § 2-23-9.1 'within the last 12 months'; GDA https://agr.georgia.gov/hemp-retail-consumable-hemp-licenses retrieved 2026-09-02; decision-coa-publication-gate): a publishable GA Package's linked LabResult must report the full analyte panel, pass overall and on contaminants, and carry a public URL and a test date. allOf-only over core/lab-result.schema.json. The '≤12 months old' recency check is date-relative (today vs tested_at) and cannot be expressed as a static JSON Schema constraint — it lives in rules/index.mjs#checkCoaGate, keyed to the same GA-COA-GATE rule ID. 365 days is fail-closed encoding of statutory 12 months.",
   "allOf": [
     { "$ref": "../../core/lab-result.schema.json" },
     {

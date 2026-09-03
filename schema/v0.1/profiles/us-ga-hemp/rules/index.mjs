@@ -117,10 +117,11 @@ export function checkFormCap(productForm, pkg) {
 }
 
 /**
- * GA-COA-GATE — decision-coa-publication-gate / 40-32-5-.06 / P6:
- * linked, in-date (≤12 months), publicly reachable, overall pass, and
+ * GA-COA-GATE — O.C.G.A. § 2-23-9.1 ("within the last 12 months") /
+ * GDA guidance / 40-32-5-.06 / decision-coa-publication-gate:
+ * linked, in-date, publicly reachable, overall pass, and
  * contaminants pass. `now` is injectable for deterministic testing; defaults
- * to real wall-clock time.
+ * to real wall-clock time. 365 days is fail-closed encoding of 12 calendar months.
  */
 export function checkCoaGate(pkg, now = new Date()) {
   const ruleId = "GA-COA-GATE";
@@ -159,11 +160,12 @@ export function checkFormBan(productForm) {
 }
 
 /**
- * GA-REG-CLASS — Relay's interpretation (not a verbatim P-row): GA
- * consumable-hemp retail covers hemp_derived and delta8; marijuana and
- * other_cannabis sit under a different licensing regime.
+ * GA-REG-CLASS — GA consumable-hemp retail limited to hemp_derived
+ * (O.C.G.A. § 2-23-3 statutory "consumable hemp product" mapping).
+ * delta8 is an analyte reported on LabResult, not a regulatory_class.
+ * Marijuana exclusion per Ga. Comp. R. & Regs. r. 40-32-5-.01(1)(a)3.
  */
-const GA_RETAIL_CLASSES = new Set(["hemp_derived", "delta8"]);
+const GA_RETAIL_CLASSES = new Set(["hemp_derived"]);
 export function checkRegulatoryClass(regulatoryClass) {
   const ruleId = "GA-REG-CLASS";
   const ok = GA_RETAIL_CLASSES.has(regulatoryClass);

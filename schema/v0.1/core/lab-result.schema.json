@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/lab-result.schema.json",
   "title": "LabResult",
-  "description": "A Certificate of Analysis. Referenced (nested) from Package.lab_result.",
+  "description": "A Certificate of Analysis. Referenced (nested) from Package.lab_result. LabResult is authoritative for COA URL (public_url) and potency (cannabinoids). Label.optional.coa_qr_url and Label.cannabinoid_facts.cannabinoids are display copies only; when they disagree, LabResult wins.",
   "type": "object",
   "properties": {
     "coa_id": { "type": "string", "minLength": 1 },
@@ -28,7 +28,10 @@
         "additionalProperties": false
       }
     },
-    "batch_lot": { "type": "string" }
+    "batch_lot": {
+      "type": "string",
+      "description": "Batch or lot identifier as a free string from the COA. One of three lot/batch shapes in core; see Label.identity_compliance.lot (Identifier) and Package.gtin (no lot carried; scheme=gtin only)."
+    }
   },
   "required": ["coa_id"],
   "additionalProperties": false

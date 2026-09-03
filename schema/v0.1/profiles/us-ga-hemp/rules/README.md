@@ -30,17 +30,17 @@ fail if product.product_form in BANNED_FORMS
 
 ## GA-REG-CLASS
 
-**Requirement:** GA consumable-hemp retail covers `hemp_derived` and
-`delta8` products; `marijuana` and `other_cannabis` fall outside this retail
-channel (different licensing regime).
-**Citation:** Relay's interpretation of "GA hemp retail" scope — **not** a
-verbatim figure from a numbered claim in the research synthesis. Flagged as
-an interpretation in the Phase 4 report; revisit with counsel before launch.
+**Requirement:** GA consumable-hemp retail is limited to `hemp_derived`
+products (statutory "consumable hemp product"). `delta8` is an analyte
+reported on LabResult, not a regulatory class. `marijuana` and
+`other_cannabis` fall outside this retail channel (different licensing
+regime).
+**Citation:** Ga. Comp. R. & Regs. r. 40-32-5-.01(1)(a)3 (F. 2024-09-11, eff. 2024-10-01) — marijuana products or low THC oil products shall not be sold as consumable hemp. https://www.law.cornell.edu/regulations/georgia/Ga-Comp-R-Regs-R-40-32-5-.01. Also: O.C.G.A. §§ 2-23-3 (consumable hemp product), 2-23-6.2 (retail license), 2-23-9.2 (must not suggest medical cannabis / low THC oil), 16-12-190 / 16-12-200; GDA https://agr.georgia.gov/hemp-retail-consumable-hemp-licenses (retrieved 2026-09-02). `hemp_derived` is our token mapping to the statutory consumable-hemp-product concept.
 **Enforced by:** JSON Schema — `product.profile.schema.json` narrows core's
-`regulatory_class` enum. Also checked by `checkRegulatoryClass()`.
+`regulatory_class` enum to `hemp_derived` only. Also checked by `checkRegulatoryClass()`.
 **Pseudocode:**
 ```
-GA_RETAIL_CLASSES = {hemp_derived, delta8}
+GA_RETAIL_CLASSES = {hemp_derived}
 fail if product.regulatory_class not in GA_RETAIL_CLASSES
 ```
 **Fixtures:** `invalid/GA-REG-CLASS/marijuana.json`.
@@ -124,8 +124,7 @@ fail if total > 0.3
 in-date — tested within the last 12 months, (b) publicly reachable, (c)
 overall-passing, (d) contaminants-passing, and (e) covers the full analyte
 panel (Δ9-THC, CBD, CBDA, CBG, CBGA, CBN, HHC).
-**Citation:** GA Dept. of Agriculture guidance (P6); accepted policy at
-`decisions/coa-publication-gate.md`.
+**Citation:** O.C.G.A. § 2-23-9.1 ("within the last 12 months"); GDA https://agr.georgia.gov/hemp-retail-consumable-hemp-licenses (retrieved 2026-09-02); accepted policy at `decisions/coa-publication-gate.md`.
 **Enforced by:** two layers.
 - JSON Schema (`product.profile.schema.json` requires `lab_result` on every
   package; `lab-result.profile.schema.json` requires `tested_at`,
@@ -136,11 +135,11 @@ panel (Δ9-THC, CBD, CBDA, CBG, CBGA, CBN, HHC).
   catch (b)-in-date, because "≤12 months old" is relative to today and no
   static schema keyword does date math.
 
-<a id="twelve-months-as-365-days"></a>**"12 months" is encoded as 365 days**
+<a id="twelve-months-as-365-days"></a>**"12 months" (O.C.G.A. § 2-23-9.1) is encoded as 365 days**
 (`config.example.json.coa_gate.max_age_days`) rather than a calendar-month
-subtraction. This is a rounding simplification, not a sourced figure — GA
-guidance says "12 months," not "365 days"; the two differ by up to a day
-across leap years. Flagged as an interpretation.
+subtraction. Statute and GDA page say "within the last 12 months," not "365 days."
+365 is a fail-closed encoding: 12 calendar months can span 366 days (leap years),
+so 365 is the stricter bound. Do not claim the statute says 365.
 
 **Pseudocode:**
 ```
