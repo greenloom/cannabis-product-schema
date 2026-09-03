@@ -35,7 +35,7 @@ GOVERNANCE.md for how decisions get made.
 ## What's in v0.1
 
 - **`schema/v0.1/core/`** — five jurisdiction-neutral objects: Product,
-  Package, LabResult, Label, Party.
+  Package, LabResult, Label, Party. (LabResult is authoritative for COA URL/potency; Label fields are display copies. Three lot/batch shapes documented; Lot vs Batch left open.)
 - **`schema/v0.1/profiles/us-ga-hemp/`** — Georgia consumable-hemp retail:
   flower/preroll excluded, per-form THC mg caps (edible, tincture,
   topical, beverage), the total-THC ≤0.3% formula, and a COA gate. See

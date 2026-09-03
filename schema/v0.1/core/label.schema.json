@@ -17,10 +17,11 @@
     },
     "cannabinoid_facts": {
       "type": "object",
-      "description": "Potency panel: analyte breakdown plus serving math.",
+      "description": "Potency panel: analyte breakdown plus serving math. cannabinoids here is a display copy of LabResult.cannabinoids; LabResult is authoritative. When they disagree, LabResult wins.",
       "properties": {
         "cannabinoids": {
           "type": "array",
+          "description": "Display copy only. Source of truth is LabResult.cannabinoids.",
           "items": { "$ref": "defs/cannabinoid.schema.json" }
         },
         "servings_per_package": { "type": "number" },
@@ -35,11 +36,14 @@
     },
     "identity_compliance": {
       "type": "object",
-      "description": "License numbers, manufacturer/processor identity, lot/batch, packaging date, track-and-trace.",
+      "description": "License numbers, manufacturer/processor identity, lot/batch, packaging date, track-and-trace. lot here uses the Identifier shape (one of three lot/batch representations in core). See LabResult.batch_lot (string) and Package.gtin (no lot carried; scheme=gtin only). Lot vs Batch terminology is intentionally left open.",
       "properties": {
         "license_numbers": { "type": "array", "items": { "type": "string" } },
         "manufacturer": { "$ref": "party.schema.json" },
-        "lot": { "$ref": "defs/identifier.schema.json" },
+        "lot": {
+          "description": "Lot/batch identifier using the Identifier shape. One of three lot/batch shapes; see LabResult.batch_lot (string) and Package.gtin (no lot). Lot vs Batch is left open.",
+          "$ref": "defs/identifier.schema.json"
+        },
         "packaging_date": { "type": "string", "format": "date" },
         "track_and_trace": { "type": "string" }
       },
@@ -63,7 +67,11 @@
         },
         "ingredients": { "type": "array", "items": { "type": "string" } },
         "storage_disposal": { "type": "string" },
-        "coa_qr_url": { "type": "string", "format": "uri" }
+        "coa_qr_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Display/QR convenience only. Source of truth is LabResult.public_url. When they disagree, LabResult wins."
+        }
       },
       "additionalProperties": false
     },
