@@ -8,8 +8,16 @@
     "package_id": { "type": "string", "minLength": 1 },
     "sku": { "type": "string" },
     "gtin": {
-      "description": "Barcode/GTIN, nullable. Uses the generic identifier shape (not restricted to scheme=gtin) so a lot or internal code can ride the same field when no GTIN is assigned.",
-      "anyOf": [{ "$ref": "defs/identifier.schema.json" }, { "type": "null" }]
+      "description": "GTIN (Global Trade Item Number) for the sellable Package. When present must use scheme \"gtin\". Nullable. Schema.org 'gtin' and GS1 expectations are inspiration for the field shape and semantics, not conformance requirements.",
+      "anyOf": [
+        {
+          "allOf": [
+            { "$ref": "defs/identifier.schema.json" },
+            { "type": "object", "properties": { "scheme": { "const": "gtin" } } }
+          ]
+        },
+        { "type": "null" }
+      ]
     },
     "title": { "type": "string" },
     "net_contents": { "$ref": "defs/quantity.schema.json" },
