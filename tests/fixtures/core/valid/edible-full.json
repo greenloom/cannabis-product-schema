@@ -1,0 +1,90 @@
+{
+  "id": "prod-001",
+  "name": { "en": "Sunrise Peach Gummies" },
+  "description": "Peach-flavored hemp-derived gummies, 20-count.",
+  "slug": "sunrise-peach-gummies",
+  "brand": {
+    "party_id": "party-brand-001",
+    "name": "Sunrise Botanicals",
+    "role": "brand",
+    "license_number": "EX-BRAND-0042"
+  },
+  "product_form": "edible",
+  "regulatory_class": "hemp_derived",
+  "categories": ["gummies", "edibles"],
+  "packages": [
+    {
+      "package_id": "pkg-001",
+      "sku": "SUN-GUM-PEACH-20",
+      "gtin": { "scheme": "gtin", "value": "00812345678905" },
+      "title": "20-count Peach Gummies",
+      "net_contents": { "value": 100, "unit": "g" },
+      "gram_equivalency": 3.5,
+      "unit_cost": { "amount": 8.5, "currency_code": "USD" },
+      "prices": [
+        { "amount": 24.99, "currency_code": "USD", "store_id": "store-example-1" }
+      ],
+      "lab_result": {
+        "coa_id": "coa-001",
+        "lab": {
+          "party_id": "party-lab-001",
+          "name": "Example Analytical Labs",
+          "role": "laboratory",
+          "license_number": "EX-LAB-0007"
+        },
+        "tested_at": "2026-06-01T00:00:00Z",
+        "expires_at": "2027-06-01T00:00:00Z",
+        "public_url": "https://coa.example.com/coa-001",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 10, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBD", "value": 25, "unit": "mg", "basis": "per_serving" }
+        ],
+        "terpenes": [
+          { "name": "Myrcene", "value": { "value": 0.4, "unit": "mg" } }
+        ],
+        "batch_lot": "LOT-2026-0601-A"
+      },
+      "label": {
+        "pdp": {
+          "product_name": "Sunrise Peach Gummies",
+          "net_quantity": { "value": 20, "unit": "count" },
+          "cannabinoid_summary": "10mg THC / 25mg CBD per gummy"
+        },
+        "cannabinoid_facts": {
+          "cannabinoids": [
+            { "code": "THC", "value": 10, "unit": "mg", "basis": "per_serving" },
+            { "code": "CBD", "value": 25, "unit": "mg", "basis": "per_serving" }
+          ],
+          "servings_per_package": 20,
+          "serving_size": { "value": 1, "unit": "gummy" }
+        },
+        "warnings": [
+          "Keep out of reach of children.",
+          "Do not operate a vehicle after use."
+        ],
+        "identity_compliance": {
+          "license_numbers": ["EX-BRAND-0042"],
+          "manufacturer": {
+            "party_id": "party-brand-001",
+            "name": "Sunrise Botanicals",
+            "role": "producer"
+          },
+          "lot": { "scheme": "lot", "value": "LOT-2026-0601-A" },
+          "packaging_date": "2026-06-05"
+        },
+        "optional": {
+          "terpenes": [
+            { "name": "Myrcene", "value": { "value": 0.4, "unit": "mg" } }
+          ],
+          "ingredients": ["hemp extract", "cane sugar", "pectin", "natural flavor"],
+          "coa_qr_url": "https://coa.example.com/coa-001"
+        },
+        "intoxicating_symbol": { "required": true, "placement": "front-panel, lower-right" }
+      },
+      "extensions": {}
+    }
+  ],
+  "extensions": {}
+}

@@ -1,0 +1,12 @@
+{
+  "id": "ga-prod-invalid-coa-missing",
+  "name": { "en": "Trailhead Vape, No COA" },
+  "product_form": "vape",
+  "regulatory_class": "delta8",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-coa-missing",
+      "sku": "TRH-VAPE-GA-1G"
+    }
+  ]
+}

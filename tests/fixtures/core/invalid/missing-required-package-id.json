@@ -1,0 +1,9 @@
+{
+  "id": "prod-invalid-004",
+  "name": { "en": "Missing Package Id Product" },
+  "product_form": "topical",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    { "sku": "NO-PKG-ID" }
+  ]
+}

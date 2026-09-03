@@ -1,0 +1,9 @@
+{
+  "id": "prod-002",
+  "name": { "en": "Trailhead Live Resin Vape" },
+  "product_form": "vape",
+  "regulatory_class": "delta8",
+  "packages": [
+    { "package_id": "pkg-002", "sku": "TRH-VAPE-D8-1G" }
+  ]
+}

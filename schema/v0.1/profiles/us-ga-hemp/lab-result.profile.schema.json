@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/profiles/us-ga-hemp/lab-result.profile.schema.json",
+  "title": "LabResult (us-ga-hemp profile)",
+  "description": "GA-COA-GATE structural subset (40-32-5-.06; GA Dept. of Agriculture guidance; decision-coa-publication-gate): a publishable GA Package's linked LabResult must report the full analyte panel, pass overall and on contaminants, and carry a public URL and a test date. allOf-only over core/lab-result.schema.json. The '≤12 months old' recency check is date-relative (today vs tested_at) and cannot be expressed as a static JSON Schema constraint — it lives in rules/index.mjs#checkCoaGate, keyed to the same GA-COA-GATE rule ID.",
+  "allOf": [
+    { "$ref": "../../core/lab-result.schema.json" },
+    {
+      "type": "object",
+      "required": [
+        "tested_at",
+        "public_url",
+        "overall_pass",
+        "contaminants_passed",
+        "cannabinoids"
+      ],
+      "properties": {
+        "tested_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "GA-COA-GATE — required (redundant type restatement so ajv strict mode's required/properties check passes; the constraint itself is already core's). The ≤12-month recency check is in rules/index.mjs#checkCoaGate."
+        },
+        "public_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "description": "GA-COA-GATE — publicly reachable COA target, distinct from any internal attachment."
+        },
+        "overall_pass": {
+          "const": true,
+          "description": "GA-COA-GATE — overall pass required."
+        },
+        "contaminants_passed": {
+          "const": true,
+          "description": "GA-COA-GATE — pesticides/heavy metals/residual solvents/microbials panel must pass."
+        },
+        "cannabinoids": {
+          "type": "array",
+          "description": "GA-COA-GATE — full analyte panel (research-synthesis P6): Δ9-THC, CBD, CBDA, CBG, CBGA, CBN, HHC each present at least once.",
+          "allOf": [
+            { "contains": { "type": "object", "properties": { "code": { "const": "THC" } }, "required": ["code"] } },
+            { "contains": { "type": "object", "properties": { "code": { "const": "CBD" } }, "required": ["code"] } },
+            { "contains": { "type": "object", "properties": { "code": { "const": "CBDA" } }, "required": ["code"] } },
+            { "contains": { "type": "object", "properties": { "code": { "const": "CBG" } }, "required": ["code"] } },
+            { "contains": { "type": "object", "properties": { "code": { "const": "CBGA" } }, "required": ["code"] } },
+            { "contains": { "type": "object", "properties": { "code": { "const": "CBN" } }, "required": ["code"] } },
+            { "contains": { "type": "object", "properties": { "code": { "const": "HHC" } }, "required": ["code"] } }
+          ]
+        }
+      }
+    }
+  ]
+}

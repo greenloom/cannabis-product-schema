@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/package.schema.json",
+  "title": "Package",
+  "description": "The sellable unit. No inventory/availability fields by design — prices[] carries commercial (store/channel) context so Product itself can stay scope-neutral.",
+  "type": "object",
+  "properties": {
+    "package_id": { "type": "string", "minLength": 1 },
+    "sku": { "type": "string" },
+    "gtin": {
+      "description": "Barcode/GTIN, nullable. Uses the generic identifier shape (not restricted to scheme=gtin) so a lot or internal code can ride the same field when no GTIN is assigned.",
+      "anyOf": [{ "$ref": "defs/identifier.schema.json" }, { "type": "null" }]
+    },
+    "title": { "type": "string" },
+    "net_contents": { "$ref": "defs/quantity.schema.json" },
+    "gram_equivalency": {
+      "type": "number",
+      "description": "Flower-equivalent grams, for purchase-limit math. Always grams by definition, so unlike other measurements it is a bare number rather than a Quantity."
+    },
+    "unit_cost": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency_code": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      },
+      "required": ["amount", "currency_code"],
+      "additionalProperties": false
+    },
+    "prices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "amount": { "type": "number" },
+          "currency_code": { "type": "string", "pattern": "^[A-Z]{3}$" },
+          "store_id": { "type": "string" },
+          "channel_id": { "type": "string" }
+        },
+        "required": ["amount", "currency_code"],
+        "additionalProperties": false
+      }
+    },
+    "lab_result": { "$ref": "lab-result.schema.json" },
+    "label": { "$ref": "label.schema.json" },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Free-form namespace for profile-specific additions. Profiles restrict core, never extend it outside this map."
+    }
+  },
+  "required": ["package_id"],
+  "additionalProperties": false
+}

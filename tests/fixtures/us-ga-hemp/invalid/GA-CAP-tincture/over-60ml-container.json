@@ -1,0 +1,29 @@
+{
+  "id": "ga-prod-invalid-tincture-container",
+  "name": { "en": "Oversized Tincture Bottle" },
+  "product_form": "tincture",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-tincture-container",
+      "sku": "GHT-75ML-BIG",
+      "net_contents": { "value": 75, "unit": "mL" },
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-tincture-container",
+        "tested_at": "2026-03-15T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-tincture-container",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 120, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 600, "unit": "mg", "basis": "per_package" },
+          { "code": "CBDA", "value": 5, "unit": "mg", "basis": "per_package" },
+          { "code": "CBG", "value": 10, "unit": "mg", "basis": "per_package" },
+          { "code": "CBGA", "value": 2, "unit": "mg", "basis": "per_package" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "HHC", "value": 0, "unit": "mg", "basis": "per_package" }
+        ]
+      }
+    }
+  ]
+}

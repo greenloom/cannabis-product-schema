@@ -1,0 +1,107 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      minor: ${{ steps.tag.outputs.minor }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Derive minor version from tag
+        id: tag
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+          # v0.1.3 -> minor = v0.1 ; also accept a bare v0.1 tag.
+          if [[ "$tag" =~ ^v([0-9]+)\.([0-9]+)(\.[0-9]+)?$ ]]; then
+            minor="v${BASH_REMATCH[1]}.${BASH_REMATCH[2]}"
+          else
+            echo "Tag '$tag' does not match vMAJOR.MINOR[.PATCH]" >&2
+            exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "minor=$minor" >> "$GITHUB_OUTPUT"
+          echo "Tag $tag -> expected \$id path segment /$minor/"
+
+      - name: Assert schema/<minor> directory exists
+        run: |
+          minor="${{ steps.tag.outputs.minor }}"
+          if [[ ! -d "schema/$minor" ]]; then
+            echo "Tag ${{ steps.tag.outputs.tag }} expects schema/$minor/ but it does not exist." >&2
+            exit 1
+          fi
+
+      - name: Assert every \$id uses the tagged minor version
+        run: |
+          minor="${{ steps.tag.outputs.minor }}"
+          mismatches=0
+          while IFS= read -r f; do
+            id=$(node -pe "JSON.parse(require('fs').readFileSync('$f','utf8')).\$id || ''")
+            [[ -z "$id" ]] && continue
+            if [[ "$id" != *"/$minor/"* ]]; then
+              echo "FAIL: $f has \$id '$id', missing path segment /$minor/ for tag ${{ steps.tag.outputs.tag }}" >&2
+              mismatches=$((mismatches + 1))
+            fi
+          done < <(find schema -name "*.schema.json")
+          if [[ $mismatches -gt 0 ]]; then
+            echo "$mismatches schema file(s) do not match the tagged minor version." >&2
+            exit 1
+          fi
+          echo "All \$ids match /$minor/."
+
+  validate:
+    needs: guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Conformance tests
+        run: node tests/run.mjs
+
+      - name: Boundary check
+        run: bash tests/boundary.sh
+
+  publish-pages:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare Pages artifact
+        run: |
+          # $id paths are https://greenloom.github.io/cannabis-product-schema/v0.1/... — the repo
+          # is served at /cannabis-product-schema/ (repo name), so the Pages root must contain
+          # v0.1/ directly (schema/v0.1 -> _site/v0.1), not schema/v0.1/.
+          mkdir -p _site
+          cp -r schema/v0.1 _site/v0.1
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

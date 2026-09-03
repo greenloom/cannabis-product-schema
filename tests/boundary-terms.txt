@@ -1,0 +1,14 @@
+# Public-repository denylist for tests/boundary.sh.
+#
+# One term per line (case-insensitive substring match). Blank lines and
+# lines starting with # are ignored. This targets Green Loom's business
+# internals — NOT the bare "Green Loom" / "greenloom" name, which is
+# intentional maintainer attribution and must never be added here (see
+# BOUNDARY.md).
+@greenloom/ui
+GRE-
+DEC-0
+design-dash
+object-library
+MCSFD
+vercel.app

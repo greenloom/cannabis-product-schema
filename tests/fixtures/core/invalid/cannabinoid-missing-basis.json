@@ -1,0 +1,17 @@
+{
+  "id": "prod-invalid-006",
+  "name": { "en": "Missing Basis Product" },
+  "product_form": "edible",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "pkg-invalid-006",
+      "lab_result": {
+        "coa_id": "coa-invalid-006",
+        "cannabinoids": [
+          { "code": "THC", "value": 10, "unit": "mg" }
+        ]
+      }
+    }
+  ]
+}

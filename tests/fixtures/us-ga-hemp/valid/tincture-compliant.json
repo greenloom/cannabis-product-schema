@@ -1,0 +1,29 @@
+{
+  "id": "ga-prod-tincture-001",
+  "name": { "en": "Golden Hour Tincture" },
+  "product_form": "tincture",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-tincture-001",
+      "sku": "GHT-30ML",
+      "net_contents": { "value": 30, "unit": "mL" },
+      "lab_result": {
+        "coa_id": "ga-coa-tincture-001",
+        "tested_at": "2026-03-15T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-tincture-001",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 54, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 600, "unit": "mg", "basis": "per_package" },
+          { "code": "CBDA", "value": 5, "unit": "mg", "basis": "per_package" },
+          { "code": "CBG", "value": 10, "unit": "mg", "basis": "per_package" },
+          { "code": "CBGA", "value": 2, "unit": "mg", "basis": "per_package" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "HHC", "value": 0, "unit": "mg", "basis": "per_package" }
+        ]
+      }
+    }
+  ]
+}

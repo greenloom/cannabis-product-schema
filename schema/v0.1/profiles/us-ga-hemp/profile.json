@@ -1,0 +1,23 @@
+{
+  "id": "us-ga-hemp",
+  "title": "Georgia consumable-hemp retail",
+  "effective_date": "2024-10-01",
+  "jurisdiction": "US-GA",
+  "description": "Narrows the jurisdiction-neutral core schema to what a Georgia consumable-hemp retailer may lawfully sell: excludes flower/preroll retail sale, applies per-product_form THC mg caps, enforces the total-THC ≤0.3% dry-weight formula, and requires a linked, in-date, publicly reachable, passing Certificate of Analysis (COA) before a Package is profile-valid. Composition is allOf-only over core — this profile restricts, never extends (decision-hemp-interchange-schema-scope). Not legal advice; encoded strictly from the cited primary sources below, per research-synthesis-ga-hemp-rule-read-and-d8449. See rules/README.md for rule IDs and NOT_MODELED.md for what this profile deliberately does not enforce.",
+  "citations": [
+    {
+      "id": "40-32-5-.06",
+      "title": "GA Comp. R. & Regs. 40-32-5-.06",
+      "source": "Georgia Secretary of State rules portal",
+      "covers": "per-form THC mg caps, full-panel COA requirement, COA recency/public-availability"
+    },
+    {
+      "id": "SB-494",
+      "title": "Georgia Senate Bill 494",
+      "source": "Georgia General Assembly",
+      "covers": "retail sale ban on hemp flower/leaf (prerolls included); statutory basis for the ≤0.3% total-THC hemp definition"
+    }
+  ],
+  "confidence_note": "Cap figures (40-32-5-.06) are high-confidence from the primary rule text via the SOS rules portal; amendment currency was not independently reconfirmed at authoring time (2026-09-02) — see the 'Effective-date and amendment currency' entry in NOT_MODELED.md and the revisit trigger in decision-coa-publication-gate.",
+  "supersedes": null
+}

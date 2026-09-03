@@ -1,0 +1,29 @@
+{
+  "id": "ga-prod-invalid-beverage-cap",
+  "name": { "en": "Overdosed Hemp Seltzer" },
+  "product_form": "beverage",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-beverage-cap",
+      "sku": "GHB-12OZ-HOT",
+      "net_contents": { "value": 12, "unit": "fl_oz" },
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-beverage-cap",
+        "tested_at": "2026-03-15T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-beverage-cap",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 15, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBD", "value": 20, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBDA", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBG", "value": 2, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBGA", "value": 0.5, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBN", "value": 0.2, "unit": "mg", "basis": "per_serving" },
+          { "code": "HHC", "value": 0, "unit": "mg", "basis": "per_serving" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "cannabis-product-schema",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cannabis Product Schema. Jurisdiction-neutral JSON Schema interchange format for cannabis/hemp product data. Core + the us-ga-hemp compliance profile.",
+  "scripts": {
+    "test": "node tests/run.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

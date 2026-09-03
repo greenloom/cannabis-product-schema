@@ -1,0 +1,43 @@
+{
+  "$comment": "Jurisdiction constants for us-ga-hemp. These numbers belong here, never in core/ (core denylist grep test in tests/run.mjs). Every figure is cited to research-synthesis-ga-hemp-rule-read-and-d8449.md, which read them from GA Comp. R. & Regs. 40-32-5-.06 (primary) via the GA Secretary of State rules portal. Consumed by schema/v0.1/profiles/us-ga-hemp/rules/index.mjs — this file is the single source of the numbers; the rule module reads it rather than re-declaring the figures.",
+  "profile": "us-ga-hemp",
+  "effective_date": "2024-10-01",
+  "product_form_caps": {
+    "edible": {
+      "per_piece_mg": 10,
+      "per_package_mg": 300,
+      "citation": "40-32-5-.06 (research-synthesis-ga-hemp-rule-read-and-d8449 P1). The 150mg figure that appeared in an earlier secondary-source draft was wrong; 300mg is the primary-rule number — do not carry 150 anywhere.",
+      "notes": "Cap table is per product_form, not a scalar. per_piece_mg compares against a cannabinoid reading with basis=per_serving (core has no 'per_piece' basis; a gummy piece is treated as one serving — see rules/README.md#basis-mapping). per_package_mg compares against basis=per_package."
+    },
+    "beverage": {
+      "per_serving_mg": 10,
+      "per_serving_volume": { "value": 12, "unit": "fl_oz" },
+      "container_max_volume": { "value": 12, "unit": "fl_oz" },
+      "citation": "40-32-5-.06 (research-synthesis-ga-hemp-rule-read-and-d8449 P2)",
+      "notes": "A beverage container is sold as a single serving, so per_serving_mg compares against a cannabinoid reading with basis=per_serving (same mapping as edible's per_piece_mg — see rules/README.md#basis-mapping). container_max_volume checks net_contents directly, matched by unit (fl_oz)."
+    },
+    "tincture": {
+      "per_ml_mg": 2,
+      "container_max_ml": 60,
+      "citation": "40-32-5-.06 (research-synthesis-ga-hemp-rule-read-and-d8449 P3). Primary rule overrides a contradicting secondary source (C1: 1mg/serving, 10oz package) — primary wins.",
+      "notes": "per_ml_mg is checked as concentration: a package's basis=per_package THC mg divided by net_contents (unit mL). container_max_ml checks net_contents directly."
+    },
+    "topical": {
+      "per_package_mg": 1000,
+      "citation": "40-32-5-.06 (research-synthesis-ga-hemp-rule-read-and-d8449 P4)",
+      "notes": "No per-serving cap for topicals — container cap only."
+    }
+  },
+  "total_thc_formula": {
+    "expression": "(THCA_percent_dry_weight * 0.877) + Delta9_THC_percent_dry_weight <= 0.3",
+    "citation": "SB 494; GA Dept. of Agriculture (research-synthesis-ga-hemp-rule-read-and-d8449 P5)",
+    "applies_when": "a lab_result reports THCA and/or THC at basis=percent_dry_weight. Does not apply to packages whose COA reports only mg-based (per_serving/per_package) readings."
+  },
+  "coa_gate": {
+    "max_age_days": 365,
+    "max_age_basis": "GA rule states '12 months'; encoded here as 365 days (see rules/README.md#twelve-months-as-365-days for the rounding note).",
+    "required_analytes": ["THC", "CBD", "CBDA", "CBG", "CBGA", "CBN", "HHC"],
+    "citation": "GA Dept. of Agriculture guidance (research-synthesis-ga-hemp-rule-read-and-d8449 P6); decision-coa-publication-gate",
+    "also_requires": ["public_url", "overall_pass = true", "contaminants_passed = true"]
+  }
+}

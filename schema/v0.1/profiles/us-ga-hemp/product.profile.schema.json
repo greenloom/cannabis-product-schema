@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/profiles/us-ga-hemp/product.profile.schema.json",
+  "title": "Product (us-ga-hemp profile)",
+  "description": "Narrows core Product for Georgia consumable-hemp retail (profile.json, effective_date 2024-10-01). allOf-only composition over core — profiles restrict, never extend (decision-hemp-interchange-schema-scope). Cross-field/computed rules (total-THC math, per-form mg caps, COA 12-month recency) cannot be expressed in JSON Schema and live in rules/index.mjs, keyed by the same rule IDs documented in rules/README.md.",
+  "allOf": [
+    { "$ref": "../../core/product.schema.json" },
+    {
+      "type": "object",
+      "properties": {
+        "product_form": {
+          "type": "string",
+          "enum": ["edible", "concentrate", "vape", "tincture", "topical", "beverage"],
+          "description": "GA-FORM-BAN — flower and preroll are excluded from GA retail (SB 494 §1; see rules/README.md#ga-form-ban). 'beverage' is permitted and capped by GA-CAP-beverage (40-32-5-.06 P2; see rules/README.md)."
+        },
+        "regulatory_class": {
+          "type": "string",
+          "enum": ["hemp_derived", "delta8"],
+          "description": "GA-REG-CLASS — GA consumable-hemp retail (GDA-regulated) covers hemp-derived and delta-8 products. marijuana and other_cannabis are excluded: they sit under a different licensing regime entirely, not this retail channel. This mapping is Relay's interpretation of 'GA hemp retail' scope, not a value taken verbatim from a numbered claim in research-synthesis-ga-hemp-rule-read-and-d8449 — flagged in the Phase 4 report."
+        },
+        "packages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["lab_result"],
+            "properties": {
+              "lab_result": { "$ref": "lab-result.profile.schema.json" }
+            },
+            "description": "GA-COA-GATE (structural half) — a GA package must carry a linked LabResult meeting the profile's COA requirements. The 12-month recency check is date-relative and lives in rules/index.mjs#checkCoaGate, not here (decision-coa-publication-gate)."
+          }
+        }
+      }
+    }
+  ]
+}

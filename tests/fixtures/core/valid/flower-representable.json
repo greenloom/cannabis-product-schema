@@ -1,0 +1,31 @@
+{
+  "id": "prod-003",
+  "name": { "en": "Cascade Haze", "es": "Neblina Cascade" },
+  "description": "Wholesale/interstate flower lot. Not a GA-retail-eligible product_form, but representable in core.",
+  "brand": {
+    "party_id": "party-brand-002",
+    "name": "Cascade Farms",
+    "role": "producer"
+  },
+  "product_form": "flower",
+  "regulatory_class": "other_cannabis",
+  "strain": { "name": "Cascade Haze", "classification": "sativa" },
+  "categories": ["flower", "wholesale"],
+  "packages": [
+    {
+      "package_id": "pkg-003",
+      "sku": "CAS-FLW-HAZE-1LB",
+      "gtin": null,
+      "net_contents": { "value": 453.6, "unit": "g" },
+      "gram_equivalency": 453.6,
+      "lab_result": {
+        "coa_id": "coa-003",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THCA", "value": 18.2, "unit": "%", "basis": "percent_dry_weight" }
+        ]
+      }
+    }
+  ]
+}

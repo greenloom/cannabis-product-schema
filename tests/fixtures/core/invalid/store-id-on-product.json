@@ -1,0 +1,7 @@
+{
+  "id": "prod-invalid-005",
+  "name": { "en": "Not Scope Neutral Product" },
+  "product_form": "vape",
+  "regulatory_class": "hemp_derived",
+  "store_id": "store-example-1"
+}

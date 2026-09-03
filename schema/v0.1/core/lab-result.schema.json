@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/lab-result.schema.json",
+  "title": "LabResult",
+  "description": "A Certificate of Analysis. Referenced (nested) from Package.lab_result.",
+  "type": "object",
+  "properties": {
+    "coa_id": { "type": "string", "minLength": 1 },
+    "lab": { "$ref": "party.schema.json" },
+    "tested_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "public_url": { "type": "string", "format": "uri" },
+    "overall_pass": { "type": "boolean" },
+    "contaminants_passed": { "type": "boolean" },
+    "cannabinoids": {
+      "type": "array",
+      "items": { "$ref": "defs/cannabinoid.schema.json" }
+    },
+    "terpenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "value": { "$ref": "defs/quantity.schema.json" }
+        },
+        "required": ["name", "value"],
+        "additionalProperties": false
+      }
+    },
+    "batch_lot": { "type": "string" }
+  },
+  "required": ["coa_id"],
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "id": "ga-prod-invalid-coa-stale",
+  "name": { "en": "Trailhead Vape, Stale COA" },
+  "product_form": "vape",
+  "regulatory_class": "delta8",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-coa-stale",
+      "sku": "TRH-VAPE-GA-1G-OLD",
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-stale",
+        "tested_at": "2020-01-01T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-stale",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBDA", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBG", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBGA", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "HHC", "value": 1, "unit": "mg", "basis": "per_package" }
+        ]
+      }
+    }
+  ]
+}

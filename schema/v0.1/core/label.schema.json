@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/label.schema.json",
+  "title": "Label",
+  "description": "Structure informed by the ASTM D8449 label module architecture (summary source; not a conformance claim, standard text not reproduced). All modules are optional in core — a jurisdiction profile requires specific subsets and adds constraints such as a state-mandated warning sticker.",
+  "type": "object",
+  "properties": {
+    "pdp": {
+      "type": "object",
+      "description": "Principal Display Panel: identity, net quantity, high-level cannabinoid summary.",
+      "properties": {
+        "product_name": { "type": "string" },
+        "net_quantity": { "$ref": "defs/quantity.schema.json" },
+        "cannabinoid_summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "cannabinoid_facts": {
+      "type": "object",
+      "description": "Potency panel: analyte breakdown plus serving math.",
+      "properties": {
+        "cannabinoids": {
+          "type": "array",
+          "items": { "$ref": "defs/cannabinoid.schema.json" }
+        },
+        "servings_per_package": { "type": "number" },
+        "serving_size": { "$ref": "defs/quantity.schema.json" }
+      },
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "description": "Health/safety statements. State-mandated wording is a profile constraint, not core content.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "identity_compliance": {
+      "type": "object",
+      "description": "License numbers, manufacturer/processor identity, lot/batch, packaging date, track-and-trace.",
+      "properties": {
+        "license_numbers": { "type": "array", "items": { "type": "string" } },
+        "manufacturer": { "$ref": "party.schema.json" },
+        "lot": { "$ref": "defs/identifier.schema.json" },
+        "packaging_date": { "type": "string", "format": "date" },
+        "track_and_trace": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "optional": {
+      "type": "object",
+      "description": "Terpenes, full ingredients, storage/disposal, COA QR access.",
+      "properties": {
+        "terpenes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "value": { "$ref": "defs/quantity.schema.json" }
+            },
+            "required": ["name", "value"],
+            "additionalProperties": false
+          }
+        },
+        "ingredients": { "type": "array", "items": { "type": "string" } },
+        "storage_disposal": { "type": "string" },
+        "coa_qr_url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "intoxicating_symbol": {
+      "type": "object",
+      "description": "Whether an intoxicating-cannabinoid product symbol (see ASTM D8441) is required on this label, and where. This carries a reference, not the symbol artwork.",
+      "properties": {
+        "required": { "type": "boolean" },
+        "placement": { "type": "string" }
+      },
+      "required": ["required"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

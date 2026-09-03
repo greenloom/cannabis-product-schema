@@ -1,0 +1,29 @@
+{
+  "id": "ga-prod-invalid-topical",
+  "name": { "en": "Overdosed Recovery Balm" },
+  "product_form": "topical",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-topical",
+      "sku": "PRB-4OZ-HOT",
+      "net_contents": { "value": 4, "unit": "oz" },
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-topical",
+        "tested_at": "2026-05-10T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-topical",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 1200, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 1500, "unit": "mg", "basis": "per_package" },
+          { "code": "CBDA", "value": 10, "unit": "mg", "basis": "per_package" },
+          { "code": "CBG", "value": 20, "unit": "mg", "basis": "per_package" },
+          { "code": "CBGA", "value": 4, "unit": "mg", "basis": "per_package" },
+          { "code": "CBN", "value": 2, "unit": "mg", "basis": "per_package" },
+          { "code": "HHC", "value": 0, "unit": "mg", "basis": "per_package" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/defs/identifier.schema.json",
+  "title": "Identifier",
+  "description": "A scoped external identifier — a GTIN/barcode, a lot number, or an internal system code.",
+  "type": "object",
+  "properties": {
+    "scheme": { "type": "string", "enum": ["gtin", "lot", "internal"] },
+    "value": { "type": "string", "minLength": 1 }
+  },
+  "required": ["scheme", "value"],
+  "additionalProperties": false
+}

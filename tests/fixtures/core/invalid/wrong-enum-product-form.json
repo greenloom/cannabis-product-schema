@@ -1,0 +1,6 @@
+{
+  "id": "prod-invalid-001",
+  "name": { "en": "Bad Form Product" },
+  "product_form": "resin",
+  "regulatory_class": "hemp_derived"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "ga-prod-invalid-preroll",
+  "name": { "en": "Stone Mountain Pre-Roll" },
+  "product_form": "preroll",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-preroll",
+      "sku": "SMP-1-GA",
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-preroll",
+        "tested_at": "2026-04-01T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-preroll",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBDA", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBG", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBGA", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "HHC", "value": 1, "unit": "mg", "basis": "per_package" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "ga-prod-invalid-marijuana",
+  "name": { "en": "Out-of-Scope Edible" },
+  "product_form": "edible",
+  "regulatory_class": "marijuana",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-marijuana",
+      "sku": "OOS-EDIBLE",
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-marijuana",
+        "tested_at": "2026-04-01T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-marijuana",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBD", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBDA", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBG", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBGA", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_serving" },
+          { "code": "HHC", "value": 1, "unit": "mg", "basis": "per_serving" }
+        ]
+      }
+    }
+  ]
+}

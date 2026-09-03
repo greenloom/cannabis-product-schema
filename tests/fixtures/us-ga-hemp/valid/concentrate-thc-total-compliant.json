@@ -1,0 +1,30 @@
+{
+  "id": "ga-prod-concentrate-001",
+  "name": { "en": "Cascade Hemp Rosin" },
+  "product_form": "concentrate",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-concentrate-001",
+      "sku": "CHR-1G",
+      "net_contents": { "value": 1, "unit": "g" },
+      "lab_result": {
+        "coa_id": "ga-coa-concentrate-001",
+        "tested_at": "2026-02-20T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-concentrate-001",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THCA", "value": 0.2, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "THC", "value": 0.05, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "CBD", "value": 15, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "CBDA", "value": 1, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "CBG", "value": 0.5, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "CBGA", "value": 0.1, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "CBN", "value": 0.05, "unit": "%", "basis": "percent_dry_weight" },
+          { "code": "HHC", "value": 0, "unit": "%", "basis": "percent_dry_weight" }
+        ]
+      }
+    }
+  ]
+}

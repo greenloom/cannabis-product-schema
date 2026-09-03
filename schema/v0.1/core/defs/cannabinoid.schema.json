@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/defs/cannabinoid.schema.json",
+  "title": "Cannabinoid measurement",
+  "description": "One cannabinoid analyte reading. Core does not constrain the set of valid codes (THC, THCA, CBD, CBDA, CBG, CBN, ...) — jurisdiction profiles may require specific analytes to be present.",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Cannabinoid code, e.g. THC, THCA, CBD, CBDA, CBG, CBGA, CBN, HHC."
+    },
+    "value": { "type": "number" },
+    "unit": { "type": "string", "minLength": 1 },
+    "basis": {
+      "type": "string",
+      "enum": ["per_serving", "per_package", "percent_dry_weight"],
+      "description": "What the value is measured against, resolving the mg-vs-percent ambiguity."
+    }
+  },
+  "required": ["code", "value", "unit", "basis"],
+  "additionalProperties": false
+}

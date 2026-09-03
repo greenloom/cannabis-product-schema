@@ -1,0 +1,30 @@
+{
+  "id": "ga-prod-edible-001",
+  "name": { "en": "Peachtree Calm Gummies" },
+  "product_form": "edible",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-edible-001",
+      "sku": "PTC-GUM-30",
+      "net_contents": { "value": 30, "unit": "count" },
+      "lab_result": {
+        "coa_id": "ga-coa-edible-001",
+        "tested_at": "2026-04-01T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-edible-001",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 9.5, "unit": "mg", "basis": "per_serving" },
+          { "code": "THC", "value": 285, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 20, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBDA", "value": 0.5, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBG", "value": 1.0, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBGA", "value": 0.2, "unit": "mg", "basis": "per_serving" },
+          { "code": "CBN", "value": 0.1, "unit": "mg", "basis": "per_serving" },
+          { "code": "HHC", "value": 0, "unit": "mg", "basis": "per_serving" }
+        ]
+      }
+    }
+  ]
+}

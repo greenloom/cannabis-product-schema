@@ -1,0 +1,12 @@
+{
+  "id": "prod-invalid-003",
+  "name": { "en": "Bare Number Product" },
+  "product_form": "tincture",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "pkg-invalid-003",
+      "net_contents": 60
+    }
+  ]
+}

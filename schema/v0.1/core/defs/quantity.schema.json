@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenloom.github.io/cannabis-product-schema/v0.1/core/defs/quantity.schema.json",
+  "title": "Quantity",
+  "description": "A numeric value paired with its explicit unit. Used everywhere a bare number would be ambiguous (mg vs %, mL vs g, etc). Never use a bare number for a measurement in this schema family — use this shape instead.",
+  "type": "object",
+  "properties": {
+    "value": { "type": "number" },
+    "unit": { "type": "string", "minLength": 1 }
+  },
+  "required": ["value", "unit"],
+  "additionalProperties": false
+}

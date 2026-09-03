@@ -1,0 +1,28 @@
+{
+  "id": "ga-prod-invalid-flower",
+  "name": { "en": "Cascade Haze Flower" },
+  "product_form": "flower",
+  "regulatory_class": "hemp_derived",
+  "packages": [
+    {
+      "package_id": "ga-pkg-invalid-flower",
+      "sku": "CAS-FLW-GA",
+      "lab_result": {
+        "coa_id": "ga-coa-invalid-flower",
+        "tested_at": "2026-04-01T00:00:00Z",
+        "public_url": "https://coa.example.com/ga-coa-invalid-flower",
+        "overall_pass": true,
+        "contaminants_passed": true,
+        "cannabinoids": [
+          { "code": "THC", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBD", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBDA", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBG", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBGA", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "CBN", "value": 1, "unit": "mg", "basis": "per_package" },
+          { "code": "HHC", "value": 1, "unit": "mg", "basis": "per_package" }
+        ]
+      }
+    }
+  ]
+}
