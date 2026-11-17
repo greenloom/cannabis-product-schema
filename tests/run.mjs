@@ -7,7 +7,7 @@
 // the same ajv instance (proves cross-file $ref to core resolves), 6. every
 // us-ga-hemp/valid fixture validates against BOTH the profile schema and
 // core Product (composition-direction check: profile-valid implies
-// core-valid), 7. every us-ga-hemp/invalid/<rule-id>/*.json fixture is
+// core-valid) AND passes every rule-module check, 7. every us-ga-hemp/invalid/<rule-id>/*.json fixture is
 // asserted to trip THAT specific rule ID, via the JS rule module for
 // cross-field/computed rules or via the profile schema for static ones.
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -25,6 +25,10 @@ const invalidDir = path.join(root, "tests/fixtures/core/invalid");
 const profilesDir = path.join(root, "schema/v0.1/profiles");
 const gaValidDir = path.join(root, "tests/fixtures/us-ga-hemp/valid");
 const gaInvalidDir = path.join(root, "tests/fixtures/us-ga-hemp/invalid");
+// Valid fixtures are checked as of this date, so COA recency (365 days)
+// doesn't start failing CI as real time passes. Move it forward together
+// with the fixtures' tested_at dates.
+const VALID_AS_OF = new Date("2026-11-16T00:00:00Z");
 const PRODUCT_ID =
   "https://greenloom.github.io/cannabis-product-schema/v0.1/core/product.schema.json";
 const GA_PRODUCT_ID =
@@ -157,6 +161,23 @@ if (validateGaProduct && validateProduct) {
           validateProduct.errors
         )}`
       );
+    }
+
+    // The schema can't express caps, total THC or COA age (rules/README.md),
+    // so a valid fixture must also pass every rule-module check.
+    const packages = data.packages ?? [];
+    const results = [
+      gaRules.checkFormBan(data.product_form),
+      gaRules.checkRegulatoryClass(data.regulatory_class),
+      ...packages.flatMap((pkg) => [
+        gaRules.checkFormCap(data.product_form, pkg),
+        gaRules.checkThcTotal(pkg.lab_result),
+        gaRules.checkCoaGate(pkg, VALID_AS_OF),
+      ]),
+    ];
+    for (const r of results) {
+      if (r.ok) pass(`us-ga-hemp valid fixture ${name} passes ${r.ruleId}`);
+      else fail(`us-ga-hemp valid fixture ${name} fails ${r.ruleId}: ${r.message}`);
     }
   }
 }
