@@ -15,6 +15,7 @@
         "overall_pass": true,
         "contaminants_passed": true,
         "cannabinoids": [
+          { "code": "THC", "value": 0.25, "unit": "%", "basis": "percent_dry_weight" },
           { "code": "THC", "value": 54, "unit": "mg", "basis": "per_package" },
           { "code": "CBD", "value": 600, "unit": "mg", "basis": "per_package" },
           { "code": "CBDA", "value": 5, "unit": "mg", "basis": "per_package" },

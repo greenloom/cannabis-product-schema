@@ -29,8 +29,8 @@ reproduced).
 ## Maintainer
 
 Cannabis Product Schema is maintained by **Green Loom**. Version 0.x means the schema will
-change — pin an exact version and re-validate on upgrade. See
-GOVERNANCE.md for how decisions get made.
+change — pin an exact version (see "Versions and pinning" below) and
+re-validate on upgrade. See GOVERNANCE.md for how decisions get made.
 
 ## What's in v0.1
 
@@ -58,6 +58,27 @@ bar for a passing change.
 
 `bash tests/boundary.sh` runs the separate public-repository boundary
 check (see BOUNDARY.md).
+
+## Versions and pinning
+
+Each release is a git tag (`v0.1.0`, `v0.1.1`, …) with notes in CHANGELOG.md
+and on the repository's Releases page.
+
+The hosted URLs — every schema's `$id`, under
+`https://greenloom.github.io/cannabis-product-schema/v0.1/` — serve the
+latest `main` for that minor version. They change when a `0.1.x` release
+does, so treat them as identifiers, not as a pinned copy.
+
+To pin, take the schema files from a release tag and load them into your
+validator yourself:
+
+```
+git clone --branch v0.1.1 https://github.com/greenloom/cannabis-product-schema
+```
+
+Register each file under its `$id` (with ajv, `addSchema`) so references
+resolve to your local copy instead of the hosted one. Re-validate your
+documents before moving to a newer tag.
 
 ## Contributing
 
